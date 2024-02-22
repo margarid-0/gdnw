@@ -1,0 +1,42 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "grass.json",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "grass.json": {
+            "scale": 0.570556640625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 512.6572528883183,
+                "y": 320.73940949935815
+            }
+        },
+        "grass.json#grass": {
+            "scaleInDock": 0.4746
+        }
+    },
+    "last.imagePath": "/Users/vitorbalbo/Documents/mapa",
+    "map.height": 10,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 16,
+    "openFiles": [
+        "grass.json"
+    ],
+    "project": "grass.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "grass.json"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
+}
