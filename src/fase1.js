@@ -12,25 +12,25 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
     preload() {
 
         // Carrega os assets necessários para a cena
-        this.load.image('bg', '/assets/backgroundSi-sheet.png')
-        this.load.image('ground', '/assets/mapa/Tilemap_-sheet.png')
-        this.load.tilemapTiledJSON('map', '/assets/mapa/grass.json')
-        this.load.image('bg', '/assets/backgroundSi-sheet.png')
-        this.load.spritesheet('personagem', '/assets/Idle(32x32)-sheet.png', {
+        this.load.image('bg', './assets/backgroundSi-sheet.png')
+        this.load.image('ground', './assets/mapa/Tilemap_-sheet.png')
+        this.load.tilemapTiledJSON('map', './assets/mapa/grass.json')
+        this.load.image('bg', './assets/backgroundSi-sheet.png')
+        this.load.spritesheet('personagem', './assets/Idle(32x32)-sheet.png', {
             frameWidth: 64,
             frameHeight: 64
         })
-        this.load.spritesheet('correndo', '/assets/Run(32x32)-sheet.png', {
+        this.load.spritesheet('correndo', './assets/Run(32x32)-sheet.png', {
             frameWidth: 64,
             frameHeight: 64
         })
-        this.load.image('pulando', '/assets/Jump(32x32)-sheet.png')
-        this.load.image('caindo', '/assets/Fall(32x32)-sheet.png')
-        this.load.spritesheet('moeda', '/assets/moeda.png', {
+        this.load.image('pulando', './assets/Jump(32x32)-sheet.png')
+        this.load.image('caindo', './assets/Fall(32x32)-sheet.png')
+        this.load.spritesheet('moeda', './assets/moeda.png', {
             frameWidth: 64,
             frameHeight: 64
         })
-        this.load.image('letraE', '/assets/letter-E.png') 
+        this.load.image('letraE', './assets/letter-E.png') 
     
         
     }
