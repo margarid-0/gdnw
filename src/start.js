@@ -1,8 +1,6 @@
-import { fase1 } from "./fase1.js"
-
-export class start extends Phaser.Scene{
+export class start extends Phaser.Scene {
     constructor() {
-        super({key: 'start'})
+        super({ key: 'start' })
     }
 
     preload() {
@@ -13,21 +11,21 @@ export class start extends Phaser.Scene{
         })
         this.load.image('setas', '/src/assets/setas.png')
 
-        
+
     }
 
     create() {
         this.add.image(500, 320, 'background')
         var button = this.add.sprite(500, 320, 'playButton', 0).setInteractive()
-        button.on('pointerover', function(event){
+        button.on('pointerover', function (event) {
             this.setFrame(1)
         })
 
-        button.on('pointerout', function(event){
+        button.on('pointerout', function (event) {
             this.setFrame(0)
         })
 
-        button.on('pointerdown', function(event){
+        button.on('pointerdown', function (event) {
             this.scene.start('fase1')
         }, this)
 
@@ -35,7 +33,7 @@ export class start extends Phaser.Scene{
     }
 
     update() {
-        
+
     }
 
 

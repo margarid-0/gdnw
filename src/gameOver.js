@@ -1,6 +1,6 @@
 export class gameOver extends Phaser.Scene {
-    constructor(){
-        super({key: 'gameOver'})
+    constructor() {
+        super({ key: 'gameOver' })
     }
 
 
@@ -16,17 +16,17 @@ export class gameOver extends Phaser.Scene {
 
         this.add.image(500, 320, 'gameOver')
         var button = this.add.sprite(500, 500, 'playButton', 0).setInteractive()
-        button.on('pointerover', function(event){
+        button.on('pointerover', function (event) {
             this.setFrame(1)
         })
-        button.on('pointerout', function(event){
+        button.on('pointerout', function (event) {
             this.setFrame(0)
         })
 
-        button.on('pointerdown', function(event){
+        button.on('pointerdown', function (event) {
             this.scene.start('start')
         }, this)
-        
+
     }
 
     update() {
