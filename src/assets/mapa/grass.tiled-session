@@ -9,11 +9,11 @@
     ],
     "fileStates": {
         "grass.json": {
-            "scale": 0.15,
+            "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4996.666666666667,
-                "y": 400
+                "x": 2800,
+                "y": 250
             }
         },
         "grass.json#grass": {
