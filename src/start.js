@@ -4,12 +4,12 @@ export class start extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background', './assets/fundo_start.png')
-        this.load.spritesheet('playButton', './assets/play_button.png', {
+        this.load.image('background', '../assets/fundo_start.png')
+        this.load.spritesheet('playButton', '../assets/play_button.png', {
             frameWidth: 128,
             frameHeight: 128
         })
-        this.load.image('setas', './assets/setas.png')
+        this.load.image('setas', '../assets/setas.png')
 
 
     }
