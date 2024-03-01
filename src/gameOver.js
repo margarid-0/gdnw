@@ -5,8 +5,8 @@ export class gameOver extends Phaser.Scene {
 
 
     preload() {
-        this.load.image('gameOver', '/src/assets/gameOver.png')
-        this.load.spritesheet('playButton', '/src/assets/play_button.png', {
+        this.load.image('gameOver', '/assets/gameOver.png')
+        this.load.spritesheet('playButton', '/assets/play_button.png', {
             frameWidth: 128,
             frameHeight: 128
         })

@@ -8,19 +8,22 @@
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 0.4746
+        },
         "grass.json": {
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2800,
-                "y": 250
+                "x": 942.4242424242425,
+                "y": 231.81818181818176
             }
         },
         "grass.json#grass": {
             "scaleInDock": 0.4746
         }
     },
-    "last.imagePath": "/Users/vitorbalbo/Documents/mapa",
+    "last.imagePath": "/Users/vitorbalbo/Documents/inteli/gdnw/assets/mapa",
     "map.height": 10,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 64,
