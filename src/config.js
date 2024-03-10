@@ -1,8 +1,9 @@
 import { fase1 } from "./fase1.js";
-// import { start } from "./start.js"; 
 import { gameOver } from "./gameOver.js"; 
 import { preload } from "./preload.js";
 import { mainMenu } from "./mainMenu.js";
+import { controls } from "./controls.js";
+import { settings } from "./settings.js";
 
 const config = {
     type: Phaser.AUTO,
@@ -16,7 +17,7 @@ const config = {
         }
     },
 
-    scene: [preload, mainMenu, fase1, gameOver]
+    scene: [preload, controls, settings, mainMenu, fase1, gameOver]
 
 }
 

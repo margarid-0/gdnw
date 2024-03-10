@@ -49,7 +49,24 @@ export class preload extends Phaser.Scene{
             frameWidth: 128,
             frameHeight: 128
         })
-    };
+
+
+        this.load.spritesheet('teclasOutras', '/assets/teclasOutras.png', {
+            frameWidth: 320,
+            frameHeight: 320
+        })
+
+        this.load.image('moveSet', '/assets/moveSet.png')
+        this.load.image('dicionario', '/assets/dicionario.png')
+
+        this.load.image('teclasWASD', '/assets/teclasWASD.png')
+        this.load.image('teclasSetas', '/assets/teclasSetas.png')
+        this.load.image('teclasSpace', '/assets/teclasSpace.png')
+        this.load.image('dash', '/assets/dash.png')
+        this.load.image('mute', '/assets/mute.png')
+
+
+    }
 
     create() {
         this.scene.start('mainMenu')

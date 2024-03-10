@@ -25,6 +25,7 @@ export class mainMenu extends Phaser.Scene {
         this.arrow = this.add.image(this.menuItemsPositions[0].x - 200, this.menuItemsPositions[0].y, 'playMain').setScale(0.018)
         this.cursors = this.input.keyboard.createCursorKeys()
         this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+        
     }
 
     update(time) {
@@ -43,6 +44,10 @@ export class mainMenu extends Phaser.Scene {
 
         if (this.selectedItemIndex === 0 && this.enterKey.isDown) {
             this.scene.start('fase1')
+        } else if (this.selectedItemIndex === 1 && this.enterKey.isDown) {
+            this.scene.start('controls')
+        } else if (this.selectedItemIndex === 2 && this.enterKey.isDown) {
+            this.scene.start('settings')
         }
     }
 
