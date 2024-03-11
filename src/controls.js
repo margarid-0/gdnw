@@ -9,8 +9,8 @@ export class controls extends Phaser.Scene {
         this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2, 'bgMainMenu').setScale(0.6).setScrollFactor(0)
         this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height * 0.15, 'controles').setScale(.6)
         
-        this.cameras.main.setBounds(0, 0, this.sys.game.config.width, 1200)
-        this.physics.world.setBounds(0, 0, this.sys.game.config.width, 1200)
+        this.cameras.main.setBounds(0, 0, this.sys.game.config.width, 1400)
+        this.physics.world.setBounds(0, 0, this.sys.game.config.width, 1400)
 
 
         this.add.image(this.sys.game.config.width * 0.5, this.sys.game.config.height * 0.35, 'moveSet').setScale(0.25)
@@ -19,6 +19,14 @@ export class controls extends Phaser.Scene {
         button.on('pointerdown', function (event) {
             this.scene.start('mainMenu')
         }, this)
+
+        button.on('pointerover', () => {
+            this.game.canvas.style.cursor = 'pointer'
+        })
+
+        button.on('pointerout', () => {
+            this.game.canvas.style.cursor = 'default'
+        })
 
         this.cursors = this.input.keyboard.createCursorKeys()
         this.esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
@@ -34,8 +42,8 @@ export class controls extends Phaser.Scene {
         this.add.image(this.sys.game.config.width * 0.5, this.sys.game.config.height, 'dicionario').setScale(0.25)
         this.add.image(this.sys.game.config.width * 0.5, this.sys.game.config.height * 1.33, 'configs').setScale(0.25)
         this.add.image(this.sys.game.config.width * 0.5, this.sys.game.config.height * 1.64, 'mute').setScale(0.25)
+        this.add.image(this.sys.game.config.width * 0.5, this.sys.game.config.height * 1.92, 'interacoes').setScale(0.25)
 
-        
 
 
         this.add.image(this.sys.game.config.width * 0.4, this.sys.game.config.height * 0.5, 'teclasWASD').setScale(.07)
@@ -44,6 +52,7 @@ export class controls extends Phaser.Scene {
         this.add.sprite(this.sys.game.config.width * 0.5, this.sys.game.config.height * 1.12, 'teclasOutras', 0).setScale(0.2)
         this.add.sprite(this.sys.game.config.width * 0.5, this.sys.game.config.height * 1.45, 'teclasOutras', 3).setScale(0.2)
         this.add.sprite(this.sys.game.config.width * 0.5, this.sys.game.config.height * 1.75, 'teclasOutras', 5).setScale(0.2)
+        this.add.sprite(this.sys.game.config.width * 0.5, this.sys.game.config.height * 2.02, 'teclasOutras', 2).setScale(0.2)
 
 
 

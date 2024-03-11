@@ -20,7 +20,7 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
         const tileSetGrass = map.addTilesetImage('grass', 'ground')
         var ground = map.createLayer('ground', tileSetGrass, 0, 0)
         ground.setCollisionByExclusion([-1], true)
-        this.personagem = this.physics.add.sprite(0, 550, 'personagem').play('idle')
+        this.personagem = this.physics.add.sprite(3000, 700, 'personagem').play('idle')
         this.personagem.setCollideWorldBounds(true).setScale(1.2)
         this.physics.add.collider(this.personagem, ground)
     
@@ -82,10 +82,7 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
         // Fazer o texto seguir a câmera
         this.texto.setScrollFactor(0)
 
-        // Loop for para demonstração e teste :)
-        for (var i = 1; i <= 10; i++) {
-            console.log(`Eu mereço ${i} pontos pelo afinco com a atividade!`);
-        }
+        this.add.sprite(this.sys.game.config.width * 0.93, this.sys.game.config.height * 0.1, 'teclasOutras', 0).setScale(0.2).setScrollFactor(0)
     }
 
     

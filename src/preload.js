@@ -44,7 +44,6 @@ export class preload extends Phaser.Scene{
 
 
 
-        this.load.image('gameOver', 'assets/gameOver.png')
         this.load.spritesheet('playButton', 'assets/play_button.png', {
             frameWidth: 128,
             frameHeight: 128
@@ -64,7 +63,35 @@ export class preload extends Phaser.Scene{
         this.load.image('teclasSpace', '/assets/teclasSpace.png')
         this.load.image('dash', '/assets/dash.png')
         this.load.image('mute', '/assets/mute.png')
+        this.load.image('som', '/assets/som.png')
+        this.load.image('idioma', '/assets/idioma.png')
 
+        this.load.image('menu', '/assets/mainMenu.png')
+        this.load.image('reiniciar', '/assets/reiniciar.png')
+        this.load.image('gameOver', 'assets/gameOver.png')
+        this.load.image('interacoes', '/assets/interacoes.png')
+        this.load.image('creditos', '/assets/creditos.png')
+
+
+        this.load.spritesheet('spriteSom', '/assets/spriteSom.png', {
+            frameWidth: 336, 
+            frameHeight: 336
+        })
+
+        this.load.spritesheet('brFlag', '/assets/brFlag.png', {
+            frameWidth: 1024,
+            frameHeight: 712
+        })
+
+        this.load.spritesheet('usFlag', '/assets/usFlag.png', {
+            frameWidth: 1024,
+            frameHeight: 712
+        })
+
+        this.load.spritesheet('spainFlag', '/assets/spainFlag.png', {
+            frameWidth: 1024,
+            frameHeight: 712
+        })
 
     }
 
