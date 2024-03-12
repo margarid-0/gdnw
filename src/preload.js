@@ -66,11 +66,36 @@ export class preload extends Phaser.Scene{
         this.load.image('som', '/assets/som.png')
         this.load.image('idioma', '/assets/idioma.png')
 
+        this.load.image('credVitor', '/assets/credVitor.png')
+        this.load.image('credLuiza', '/assets/credLuiza.png')
+        this.load.image('credDaniel', '/assets/credDaniel.png')
+        this.load.image('credCarol', '/assets/credCarol.png')
+        this.load.image('credIgor', '/assets/credIgor.png')
+        this.load.image('credThalyta', '/assets/credThalyta.png')
+        this.load.image('credJoao', '/assets/credJoao.png')
+        this.load.image('bgGameOver', '/assets/bgGameOver.png')
+        this.load.image('iconDicionario', '/assets/dicionarioIcon.png')
+
+        this.load.image('moedaCount', '/assets/moedaCount.png')
+        this.load.spritesheet('vidasCount', '/assets/vidasCount.png', {
+            frameWidth: 672,
+            frameHeight: 576
+        })
+
+        this.load.image('fundoPause', '/assets/fundoPause.png')
+
+
+
+
         this.load.image('menu', '/assets/mainMenu.png')
         this.load.image('reiniciar', '/assets/reiniciar.png')
         this.load.image('gameOver', 'assets/gameOver.png')
         this.load.image('interacoes', '/assets/interacoes.png')
         this.load.image('creditos', '/assets/creditos.png')
+        this.load.spritesheet('checkpoint', '/assets/checkPoint.png', {
+            frameWidth: 192,
+            frameHeight: 192
+        })
 
 
         this.load.spritesheet('spriteSom', '/assets/spriteSom.png', {

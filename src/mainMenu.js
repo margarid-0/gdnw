@@ -10,7 +10,7 @@ export class mainMenu extends Phaser.Scene {
         this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 4, 'uniWorld').setScale(0.45)
         
         this.menuItemsPositions = [
-            {x: this.sys.game.config.width / 2, y: this.sys.game.config.height * 0.7},
+            {x: this.sys.game.config.width * 0.51, y: this.sys.game.config.height * 0.7},
             {x: this.sys.game.config.width / 2, y: this.sys.game.config.height * 0.78},
             {x: this.sys.game.config.width / 2, y: this.sys.game.config.height * 0.86}
         ]
@@ -26,18 +26,20 @@ export class mainMenu extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
         this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
         
+
+        this.resetMenu()
     }
 
     update(time) {
         if (this.arrowKeysEnabled == true) {
             if (this.cursors.up.isDown && this.selectedItemIndex > 0) {
-                this.selectedItemIndex--;
-                this.moveArrowToSelectedItem();
-                this.disableArrowKeysTemporarily(time);
+                this.selectedItemIndex--
+                this.moveArrowToSelectedItem()
+                this.disableArrowKeysTemporarily(time)
             } else if (this.cursors.down.isDown && this.selectedItemIndex < this.menuItems.length - 1) {
                 this.selectedItemIndex++;
-                this.moveArrowToSelectedItem();
-                this.disableArrowKeysTemporarily(time);
+                this.moveArrowToSelectedItem()
+                this.disableArrowKeysTemporarily(time)
             }
         }
 
@@ -52,9 +54,9 @@ export class mainMenu extends Phaser.Scene {
     }
 
     moveArrowToSelectedItem() {
-        let selectedItemPosition = this.menuItemsPositions[this.selectedItemIndex];
-        this.arrow.x = selectedItemPosition.x - 200; 
-        this.arrow.y = selectedItemPosition.y;
+        let selectedItemPosition = this.menuItemsPositions[this.selectedItemIndex]
+        this.arrow.x = selectedItemPosition.x - 200
+        this.arrow.y = selectedItemPosition.y
     }
 
     disableArrowKeysTemporarily() {
@@ -64,4 +66,7 @@ export class mainMenu extends Phaser.Scene {
         }, [], this);
     }
 
+    resetMenu() {
+        this.selectedItemIndex = 0
+    }
 }

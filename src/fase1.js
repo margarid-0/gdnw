@@ -15,15 +15,28 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
         this.imagemFundo = this.add.image(1664, 320, 'bg')   
         this.physics.world.setBounds(0, 0, 3328, 640)
         
+
+
         // Criação e configuração do personagem
         const map = this.make.tilemap({key: 'map'})
         const tileSetGrass = map.addTilesetImage('grass', 'ground')
         var ground = map.createLayer('ground', tileSetGrass, 0, 0)
         ground.setCollisionByExclusion([-1], true)
-        this.personagem = this.physics.add.sprite(3000, 700, 'personagem').play('idle')
+
+        this.personagem = this.physics.add.sprite(200, 550, 'personagem').play('idle').setDepth(1)
         this.personagem.setCollideWorldBounds(true).setScale(1.2)
         this.physics.add.collider(this.personagem, ground)
+
+
+        this.anims.create({
+            key: 'bandeira',
+            frames: this.anims.generateFrameNumbers('checkpoint', {start: 0, end: 9}),
+            frameRate: 15,
+            repeat: -1
+        })
     
+
+
         // Animações do personagem
         this.anims.create({
             key: 'idle', 
@@ -57,7 +70,9 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
             right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
             rightArrow: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT),
             space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
-            e: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E)
+            e: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
+            esc: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC),
+            x: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X)
         })  
     
         this.cameras.main.setBounds(0, 0, 3328, 640)
@@ -73,16 +88,43 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
         // Criação da imagem de tecla E para avanço de tela no fim do jogo
         this.letraE = this.add.image(3150, 400, 'letraE').setScale(0.6).setVisible(false)
 
-        // Texto das moedas
-        this.texto = this.add.text(50, 50, 'Moedas: 0', {
-            fontSize: '50px',
-            fill: '#252525'
+
+        this.dicionario = this.add.sprite(this.sys.game.config.width * 0.93, this.sys.game.config.height * 0.1, 'iconDicionario', 0).setScale(0.04).setScrollFactor(0).setInteractive()
+
+        this.dicionario.on('pointerover', () => {
+            this.game.canvas.style.cursor = 'pointer'
+        })
+
+        this.dicionario.on('pointerout', () => {
+            this.game.canvas.style.cursor = 'default'
+
+        })
+
+        this.add.sprite(this.sys.game.config.width * 0.1, this.sys.game.config.height * 0.1, 'moedaCount', 0).setScale(0.08).setScrollFactor(0)
+
+        this.add.sprite(500, 480, 'checkpoint').play('bandeira').setDepth(0)
+
+        this.pontuacao = 0
+        this.texto = this.add.text(128, 45, '', {
+            fontSize: '40px',
+            fill: '#252525',
+            fontFamily: 'pixel Font'
         }) 
 
-        // Fazer o texto seguir a câmera
-        this.texto.setScrollFactor(0)
+        this.texto.setScrollFactor(0).setDepth(2)
 
-        this.add.sprite(this.sys.game.config.width * 0.93, this.sys.game.config.height * 0.1, 'teclasOutras', 0).setScale(0.2).setScrollFactor(0)
+        this.add.sprite(this.sys.game.config.width * 0.25, this.sys.game.config.height * 0.1, 'vidasCount', 0).setScale(0.08).setScrollFactor(0)
+
+        this.add.sprite(this.sys.game.config.width * 0.3, this.sys.game.config.height * 0.1, 'vidasCount', 1).setScale(0.08).setScrollFactor(0)
+
+        this.add.sprite(this.sys.game.config.width * 0.35, this.sys.game.config.height * 0.1, 'vidasCount', 5).setScale(0.08).setScrollFactor(0)
+
+
+        this.teclas.esc.on('down', () => {
+            this.scene.pause()
+            this.scene.launch('pause')
+        })
+      
     }
 
     
@@ -129,6 +171,11 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
             this.letraE.setVisible(false);
         }
 
+
+        if (this.teclas.x.isDown) {
+            this.scene.start('mainMenu')
+        }
+
         
     }
     // Método para criar as moedas na cena
@@ -140,8 +187,7 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
         this.physics.add.overlap(this.personagem, moeda, (personagem, moeda) => {
             moeda.disableBody(true, true),
             this.pontuacao += 1
-            this.texto.setText('Moedas: ' + this.pontuacao)
-
+            this.texto.setText(this.pontuacao)
         }, null, this)
 
         return moeda;

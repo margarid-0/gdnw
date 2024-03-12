@@ -7,7 +7,7 @@ export class gameOver extends Phaser.Scene {
 
 
     create() {
-        this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2, 'bgMainMenu').setScale(0.6)
+        this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2, 'bgGameOver').setScale(0.6)
         this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height * 0.33, 'gameOver').setScale(0.3)
 
         this.menuItemsPositions = [

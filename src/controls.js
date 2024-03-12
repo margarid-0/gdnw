@@ -64,5 +64,4 @@ export class controls extends Phaser.Scene {
             this.scene.start('mainMenu')
         }
     }
-    
 }

@@ -121,9 +121,9 @@ export class settings extends Phaser.Scene {
 
         })
 
-        // this.creditos.on('pointerdown', () => {
-        //     this.scene.start('creditos')
-        // })
+        this.creditos.on('pointerdown', () => {
+            this.scene.start('creditos')
+        })
 
     }
 
@@ -131,6 +131,8 @@ export class settings extends Phaser.Scene {
     update() {
         if (this.esc.isDown || this.enter.isDown) {
             this.scene.start('mainMenu')
+            this.selectedItemIndex = 0
         }
+
     }
 }
