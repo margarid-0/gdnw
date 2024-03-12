@@ -37,7 +37,7 @@ export class creditos extends Phaser.Scene {
         this.abrirLink(igor, 'https://www.linkedin.com/in/igor-sguissardi-a37270244/')
         this.abrirLink(joao, 'https://www.linkedin.com/in/joao-carbone-58b9b72b7/')
         this.abrirLink(luiza, 'https://www.linkedin.com/in/luizapetenazzi')
-        this.abrirLink(thalyta, 'www.linkedin.com/in/thalyta-da-silva-viana-4a41a4239')
+        this.abrirLink(thalyta, 'https://www.linkedin.com/in/thalyta-da-silva-viana-4a41a4239')
         this.abrirLink(vitor, 'https://www.linkedin.com/in/vitor-balbo/')
 
         

@@ -25,6 +25,7 @@ export class gameOver extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
         this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
         
+        this.resetMenu()
     }
 
     update(time) {
@@ -61,5 +62,8 @@ export class gameOver extends Phaser.Scene {
         }, [], this);
     }
 
+    resetMenu() {
+        this.selectedItemIndex = 0
+    }
     
 }

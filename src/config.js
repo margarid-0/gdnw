@@ -6,6 +6,7 @@ import { controls } from "./controls.js";
 import { settings } from "./settings.js";
 import { creditos } from "./creditos.js";
 import { pause } from "./pause.js";
+import { dicionario } from "./dicionario.js";
 
 const config = {
     type: Phaser.AUTO,
@@ -19,7 +20,7 @@ const config = {
         }
     },
 
-    scene: [preload, controls, settings, creditos, mainMenu, fase1, gameOver, pause]
+    scene: [preload, controls, settings, creditos, mainMenu, fase1, gameOver, pause, dicionario]
 
 
 }

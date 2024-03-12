@@ -1,23 +1,24 @@
-export class fase1 extends Phaser.Scene { // Exportação de classe que estende Phaser.Scene
+export class fase1 extends Phaser.Scene { 
     constructor() {
-        super({key: 'fase1'}) // Chave da cena para referência futura
-        // Inicialização de propriedades da cena
+        super({key: 'fase1'}) 
+
         this.teclas = null
         this.imagemFundo = null
         this.personagem = null
         this.pontuacao = 0
         this.texto = null
+        this.volume = true
     }
     
     create() {
-        // Criação e configuração da cena
+
         this.add.image(500, 320, 'bg')   
         this.imagemFundo = this.add.image(1664, 320, 'bg')   
         this.physics.world.setBounds(0, 0, 3328, 640)
         
 
 
-        // Criação e configuração do personagem
+
         const map = this.make.tilemap({key: 'map'})
         const tileSetGrass = map.addTilesetImage('grass', 'ground')
         var ground = map.createLayer('ground', tileSetGrass, 0, 0)
@@ -37,7 +38,7 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
     
 
 
-        // Animações do personagem
+
         this.anims.create({
             key: 'idle', 
             frames: this.anims.generateFrameNumbers('personagem', { start: 0, end: 10 }),
@@ -72,24 +73,25 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
             space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
             e: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
             esc: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC),
-            x: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X)
+            x: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X),
+            m: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M)
         })  
     
         this.cameras.main.setBounds(0, 0, 3328, 640)
         this.cameras.main.startFollow(this.personagem)
 
-        // Criação do array de moedas
+
         this.moedas = []
         this.moedas.push(this.createMoeda(200, 450))
         this.moedas.push(this.createMoeda(1120, 480))
         this.moedas.push(this.createMoeda(1520, 230))
         this.moedas.push(this.createMoeda(2220, 100))
 
-        // Criação da imagem de tecla E para avanço de tela no fim do jogo
+
         this.letraE = this.add.image(3150, 400, 'letraE').setScale(0.6).setVisible(false)
 
 
-        this.dicionario = this.add.sprite(this.sys.game.config.width * 0.93, this.sys.game.config.height * 0.1, 'iconDicionario', 0).setScale(0.04).setScrollFactor(0).setInteractive()
+        this.dicionario = this.add.sprite(this.sys.game.config.width * 0.93, this.sys.game.config.height * 0.1, 'dicionarioIconRoll', 0).setScale(0.04).setScrollFactor(0).setInteractive()
 
         this.dicionario.on('pointerover', () => {
             this.game.canvas.style.cursor = 'pointer'
@@ -98,6 +100,11 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
         this.dicionario.on('pointerout', () => {
             this.game.canvas.style.cursor = 'default'
 
+        })
+
+        this.dicionario.on('pointerdown', () => {
+            this.scene.pause()
+            this.scene.launch('dicionario')
         })
 
         this.add.sprite(this.sys.game.config.width * 0.1, this.sys.game.config.height * 0.1, 'moedaCount', 0).setScale(0.08).setScrollFactor(0)
@@ -115,22 +122,35 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
 
         this.add.sprite(this.sys.game.config.width * 0.25, this.sys.game.config.height * 0.1, 'vidasCount', 0).setScale(0.08).setScrollFactor(0)
 
-        this.add.sprite(this.sys.game.config.width * 0.3, this.sys.game.config.height * 0.1, 'vidasCount', 1).setScale(0.08).setScrollFactor(0)
+        this.add.sprite(this.sys.game.config.width * 0.3, this.sys.game.config.height * 0.1, 'vidasCount', 0).setScale(0.08).setScrollFactor(0)
 
-        this.add.sprite(this.sys.game.config.width * 0.35, this.sys.game.config.height * 0.1, 'vidasCount', 5).setScale(0.08).setScrollFactor(0)
+        this.add.sprite(this.sys.game.config.width * 0.35, this.sys.game.config.height * 0.1, 'vidasCount', 0).setScale(0.08).setScrollFactor(0)
 
 
         this.teclas.esc.on('down', () => {
             this.scene.pause()
             this.scene.launch('pause')
         })
+
+
+        // this.mute = this.add.sprite(this.sys.game.config.width * 0.5, this.sys.game.config.height * 0.5, 'spriteSom', 2).setScale(.4).setInteractive().setVisible(true).setScrollFactor(0)
+
+        // this.teclas.m.on('down', () => {
+        //     this.volume = !this.volume
+        //     if(this.volume) {
+        //         this.sound.resumeAll()
+        //     } else {
+        //         this.sound.pauseAll()
+        //     }
+        //     this.mute.setFrame(this.volume ? 2:4)
+        // })
       
     }
 
     
     update() {
         
-        // Movimentação do jogador
+
         if (this.teclas.left.isDown && this.personagem.y >= 280 || this.teclas.leftArrow.isDown) {
             this.personagem.setVelocityX(-150)
             this.personagem.setFlip(true, false)
@@ -156,7 +176,7 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
             this.pulosRestantes = 1
         }
 
-        // Fazer a imagem da tecla E aparecer ao chegar a uma distância específica
+
         var distancia = Phaser.Math.Distance.Between(
             this.personagem.x, this.personagem.y,
             this.letraE.x, this.letraE.y
@@ -173,12 +193,13 @@ export class fase1 extends Phaser.Scene { // Exportação de classe que estende 
 
 
         if (this.teclas.x.isDown) {
-            this.scene.start('mainMenu')
+            this.scene.pause()
+            this.scene.launch('dicionario')
         }
 
         
     }
-    // Método para criar as moedas na cena
+
     createMoeda(x, y) {
         var moeda = this.physics.add.sprite(x, y, 'moeda').play('moedaGirando').setScale(0.8)
         moeda.body.setAllowGravity(false)

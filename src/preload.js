@@ -83,8 +83,10 @@ export class preload extends Phaser.Scene{
         })
 
         this.load.image('fundoPause', '/assets/fundoPause.png')
-
-
+        this.load.image('dicionarioIconRoll', '/assets/dicionarioIconRoll.png')
+        this.load.image('pergaminhoDicionario', '/assets/pergaminho.png')
+        this.load.image('unileverPergaminho', '/assets/unileverLogoGrande.png')
+        this.load.image('dicionarioPergaminho', '/assets/dicionarioPerg.png')
 
 
         this.load.image('menu', '/assets/mainMenu.png')
